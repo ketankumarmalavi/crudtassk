@@ -1,0 +1,141 @@
+
+<div class="container">
+    <div class="row mt-5 ">
+    
+       
+        <div class="col-lg-6 border mx-auto d-block ">
+    
+            <form [formGroup]="formdata" (ngSubmit)="save(formdata.value)">
+                <input type="hidden" formControlName="id" />
+    
+                <div class="">
+                    <label for="" class="form-label">Name </label>
+                    <input type="text" class="form-control" formControlName="name" />
+                </div>
+
+                
+                <div class="">
+                    <label for="" class="form-label">Lastname </label>
+                    <input type="text" class="form-control" formControlName="lastname" />
+                </div>
+    
+                <div class="">
+                    <label for="" class="form-label">DOB </label>
+                    <input type="date" class="form-control" formControlName="dob" />
+                </div>
+    
+    
+                <div class="">
+                    <label for="" class="form-label">Email </label>
+                    <input type="text" class="form-control" formControlName="email" />
+                </div>
+    
+                <div class="col-lg-4 mt-2 mb-3">
+                    <input type="submit" value="Submit" class="btn btn-success btn-md" />
+                </div>
+    
+            </form>
+    
+    
+        </div>
+    
+    </div>
+    </div>
+    <hr>
+    <div class="container bootstrap snippets bootdey">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="main-box no-header clearfix">
+                    <div class="main-box-body clearfix">
+                        <div class="table-responsive">
+                            <table class="table user-list">
+                                <thead>
+                                    <tr>
+                                        <th><span>Id</span></th>
+                                        <th><span>Name</span></th>
+                                        <th><span>Lastname</span></th>
+                                        <th><span>Date of Birth</span></th>
+                                        <th><span>Email</span></th>
+                                        <th>&nbsp; Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let addUser of getall, let i=index">
+                                        <td>{{i+1}}</td>
+                                        <td>{{addUser.name}}</td>
+                                        <td>{{addUser.lastname}}</td>
+                                        <td>{{addUser.dob}}</td>
+                                        <td>{{addUser.email}}</td>
+                                        <td>
+                                            <button class="btn btn-danger  btn-xs"
+                                                (click)="deleterecord(addUser.id)">Delete</button>
+    
+                                            &nbsp;
+                                            <button class="btn btn-danger  btn-xs" (click)="edit(addUser.id)">Edit</button>
+                                        </td>
+                                    </tr>
+    
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    <!-- line modal -->
+    <div class="modal fade" id="squarespaceModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span
+                            class="sr-only">Close</span></button>
+                    <h3 class="modal-title" id="lineModalLabel">My Modal</h3>
+                </div>
+                <div class="modal-body">
+    
+                    <!-- content goes here -->
+                    <form>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Email address</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Password</label>
+                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputFile">File input</label>
+                            <input type="file" id="exampleInputFile">
+                            <p class="help-block">Example block-level help text here.</p>
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox"> Check me out
+                            </label>
+                        </div>
+                        <button type="submit" class="btn btn-default">Submit</button>
+                    </form>
+    
+                </div>
+                <div class="modal-footer">
+                    <div class="btn-group btn-group-justified" role="group" aria-label="group button">
+                        <div class="btn-group" role="group">
+                            <button type="button" class="btn btn-default" data-dismiss="modal" role="button">Close</button>
+                        </div>
+                        <div class="btn-group btn-delete hidden" role="group">
+                            <button type="button" id="delImage" class="btn btn-default btn-hover-red" data-dismiss="modal"
+                                role="button">Delete</button>
+                        </div>
+                        <div class="btn-group" role="group">
+                            <button type="button" id="saveImage" class="btn btn-default btn-hover-green" data-action="save"
+                                role="button">Save</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
